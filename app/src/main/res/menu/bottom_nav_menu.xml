@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_chicago"
-        android:icon="@drawable/currentorder_24"
+        android:icon="@drawable/apizza_image_04"
         android:title="@string/chicago" />
     <item
         android:id="@+id/navigation_newyork"
