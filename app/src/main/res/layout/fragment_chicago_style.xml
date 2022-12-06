@@ -32,12 +32,13 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/sizeSpinner"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/flavorSpinner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/chicagoStylePizzaTitle"
-            app:layout_constraintVertical_bias="0.288"
             tools:src="@tools:sample/avatars" />
 
         <Spinner
