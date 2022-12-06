@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Project5</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="chicago">Chicago Style</string>
+    <string name="newyork">New York Style</string>
+    <string name="current">Current Orders</string>
+    <string name="store">Store Orders</string>
 </resources>
