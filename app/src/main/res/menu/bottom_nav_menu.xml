@@ -3,21 +3,19 @@
 
     <item
         android:id="@+id/navigation_chicago"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/chicago" />
-
+        android:title="@string/chicago"
+        android:icon="@drawable/currentorder_24" />
     <item
         android:id="@+id/navigation_newyork"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/newyork" />
-
+        android:title="@string/new_york"
+        android:icon="@drawable/storeorders_24" />
     <item
         android:id="@+id/navigation_current"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/current" />
+        android:title="@string/current"
+        android:icon="@drawable/currentorder_24" />
     <item
         android:id="@+id/navigation_store"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/store" />
+        android:title="@string/store"
+        android:icon="@drawable/storeorders_24" />
 
 </menu>
