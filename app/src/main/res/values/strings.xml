@@ -4,4 +4,6 @@
     <string name="new_york">New York</string>
     <string name="current">Current Order</string>
     <string name="store">Store Orders</string>
+    <string name="ChicagoStyleTitle">Chicago Style Pizza</string>
+    <string name="Crust">Crust</string>
 </resources>
