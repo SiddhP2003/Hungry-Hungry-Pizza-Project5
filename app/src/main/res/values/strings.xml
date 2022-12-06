@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Project5</string>
-    <string name="chicago">Chicago Style</string>
-    <string name="new_york">New York Style</string>
-    <string name="current">Current Orders</string>
+    <string name="app_name">Project 5</string>
+    <string name="chicago">Chicago</string>
+    <string name="new_york">New York</string>
+    <string name="current">Current Order</string>
     <string name="store">Store Orders</string>
 </resources>

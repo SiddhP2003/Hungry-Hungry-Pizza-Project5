@@ -3,8 +3,8 @@
 
     <item
         android:id="@+id/navigation_chicago"
-        android:title="@string/chicago"
-        android:icon="@drawable/currentorder_24" />
+        android:icon="@drawable/currentorder_24"
+        android:title="@string/chicago" />
     <item
         android:id="@+id/navigation_newyork"
         android:title="@string/new_york"
