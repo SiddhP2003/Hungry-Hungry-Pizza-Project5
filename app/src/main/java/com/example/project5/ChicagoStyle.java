@@ -18,6 +18,7 @@ import android.widget.TextView;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,10 +26,10 @@ import java.text.DecimalFormat;
  * create an instance of this fragment.
  */
 public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
-     Spinner flavorSpinner;
-    private Spinner sizeSpinner;
-    private TextView crustTextView;
-    private ImageView pizzaFlavorImageView;
+    private Spinner chicagoFlavorSpinner;
+    private Spinner chicagoSizeSpinner;
+    private TextView chicagoCrustType;
+    private ImageView chicagoImageView;
     private ListView toppings;
     private EditText priceEditText;
     private String[] flavors = {"Deluxe", "BBQ Chicken",
@@ -93,19 +94,21 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_chicago_style, container, false);
-        flavorSpinner = view.findViewById(R.id.flavorSpinner);
-        sizeSpinner = view.findViewById(R.id.sizeSpinner);
+        chicagoFlavorSpinner = view.findViewById(R.id.chicagoFlavorSpinner);
+        chicagoSizeSpinner = view.findViewById(R.id.chicagoSizeSpinner);
         flavorAdapter = new ArrayAdapter<String>(this.getActivity(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, flavors);
         sizeAdapter = new ArrayAdapter<String>(this.getActivity(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, sizes);
-        flavorSpinner.setAdapter(flavorAdapter);
-        sizeSpinner.setAdapter(sizeAdapter);
-        crustTextView = view.findViewById(R.id.crustTextView);
-        pizzaFlavorImageView = view.findViewById(R.id.pizzaFlavorImageView);
-        //priceEditText = view.findViewById(R.id.)
-        //toppings = view.findViewById(R.id);
-        toppings.setOnItemClickListener(this);
-        toppingAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1,toppingList);
-        toppings.setAdapter(toppingAdapter);
+        chicagoFlavorSpinner.setAdapter(flavorAdapter);
+        chicagoSizeSpinner.setAdapter(sizeAdapter);
+        chicagoCrustType = view.findViewById(R.id.chicagoCrustType);
+        chicagoImageView = view.findViewById(R.id.chicagoImageView);
+        setImage("Build Your Own");
+//        //priceEditText = view.findViewById(R.id.)
+//        //toppings = view.findViewById(R.id);
+//        toppings.setOnItemClickListener(this);
+//        toppingAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_multiple_choice,toppingList);
+//        toppings.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+//        toppings.setAdapter(toppingAdapter);
 
 
         // Inflate the layout for this fragment
@@ -115,7 +118,7 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         switch(adapterView.getId()){
-            case R.id.flavorSpinner:
+            case R.id.chicagoFlavorSpinner:
                 String selectedFlavor = flavorSpinner.getSelectedItem().toString();
         }
     }
@@ -152,20 +155,19 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         }
     }
 
-    private void setImage(String flavor) throws FileNotFoundException {
+    private void setImage(String flavor)  {
         if(flavor.equalsIgnoreCase("Build Your Own")){
-            pizzaFlavorImageView.setImageResource(R.drawable.);
+            pizzaFlavorImageView.setImageResource(R.drawable.build_your_own_chicago);
 
         }
         else if(flavor.equalsIgnoreCase("Meatzza")){
-            pizzaFlavorImageView.setImageResource(R.drawable.);
+            pizzaFlavorImageView.setImageResource(R.drawable.meatzza_chicago);
         }
         else if(flavor.equalsIgnoreCase("BBQ Chicken")){
-            pizzaFlavorImageView.setImageResource(R.drawable.);
+            pizzaFlavorImageView.setImageResource(R.drawable.bbq_chicken_chicago);
         }
         else{
-            //deluxe image
-            pizzaFlavorImageView.setImageResource(R.drawable.);
+            pizzaFlavorImageView.setImageResource(R.drawable.deluxe_chicago);
         }
         //pizzaFlavorImageView.setImage(image);
     }
@@ -175,21 +177,21 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         priceEditText.setText(format.format(pizza.price()));
     }
 
-    private void setToppings(String flavor){
-        if(flavor.equals("Build Your Own")){
-            for(int i = 0; i < toppingAdapter.getCount(); i++){
-                if(toppingAdapter.isEnabled())
-            }
-        }
-        else if(flavor.equals("BBQ Chicken")){
-
-        }
-        else if(flavor.equals("Deluxe")){
-        }
-        else if(flavor.equals("Meatzza")){
-
-        }
-    }
+//    private void setToppings(String flavor){
+//        if(flavor.equals("Build Your Own")){
+//            for(int i = 0; i < toppingAdapter.getCount(); i++){
+//                if(toppingAdapter.getItem())
+//            }
+//        }
+//        else if(flavor.equals("BBQ Chicken")){
+//
+//        }
+//        else if(flavor.equals("Deluxe")){
+//        }
+//        else if(flavor.equals("Meatzza")){
+//
+//        }
+//    }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
