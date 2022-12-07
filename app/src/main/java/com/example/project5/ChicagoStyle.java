@@ -100,6 +100,8 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         sizeAdapter = new ArrayAdapter<String>(this.getActivity(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, sizes);
         chicagoFlavorSpinner.setAdapter(flavorAdapter);
         chicagoSizeSpinner.setAdapter(sizeAdapter);
+        chicagoFlavorSpinner.setOnItemSelectedListener(this);
+        chicagoSizeSpinner.setOnItemSelectedListener(this);
         chicagoCrustType = view.findViewById(R.id.chicagoCrustType);
         chicagoImageView = view.findViewById(R.id.chicagoImageView);
         setImage("Deluxe");
@@ -117,10 +119,12 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        switch(adapterView.getId()){
-            case R.id.chicagoFlavorSpinner:
+//        switch(adapterView.getId()){
+//            case R.id.chicagoFlavorSpinner:
                 String selectedFlavor = chicagoFlavorSpinner.getSelectedItem().toString();
-        }
+                changeView(selectedFlavor);
+         //       break;
+    //    }
     }
 
     @Override
@@ -177,24 +181,47 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         priceEditText.setText(format.format(pizza.price()));
     }
 
-//    private void setToppings(String flavor){
-//        if(flavor.equals("Build Your Own")){
-//            for(int i = 0; i < toppingAdapter.getCount(); i++){
-//                if(toppingAdapter.getItem())
-//            }
-//        }
-//        else if(flavor.equals("BBQ Chicken")){
-//
-//        }
-//        else if(flavor.equals("Deluxe")){
-//        }
-//        else if(flavor.equals("Meatzza")){
-//
-//        }
-//    }
+    private void setToppings(String flavor){
+        if(flavor.equals("Build Your Own")){
+            for(int i = 0; i < toppingAdapter.getCount(); i++){
+                toppings.setItemChecked(i,true);
+            }
+        }
+        else if(flavor.equals("BBQ Chicken")){
+            for(int i = 0; i < toppingAdapter.getCount(); i++){
+                toppings.setItemChecked(i,false);
+            }
+        }
+        else if(flavor.equals("Deluxe")){
+            for(int i = 0; i < toppingAdapter.getCount(); i++){
+                toppings.setItemChecked(i,false);
+            }
+        }
+        else if(flavor.equals("Meatzza")){
+            for(int i = 0; i < toppingAdapter.getCount(); i++){
+                toppings.setItemChecked(i,false);
+            }
+
+        }
+    }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+    }
+
+    public void defaultView() throws FileNotFoundException {
+//        pizzaFlavorComboBox.setValue("Build Your Own");
+//        smallButton.setSelected(true);
+//        pizza = pizzaFactory.createBuildYourOwn();
+//        crustTextField.setText(pizza.getCrust().crust());
+//        pizzaPriceTextField.setText(Double.toString(pizza.price()));
+//        selectedToppingsListView.setItems(null);
+//        setImage("Build Your Own");
+//        setToppings();
+   }
+
+    public void changeView(String flavor){
+        setImage(flavor);
     }
 }
