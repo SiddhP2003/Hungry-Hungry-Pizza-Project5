@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
@@ -60,7 +61,7 @@ public class NewYorkStyle extends Fragment implements AdapterView.OnItemSelected
         newYorkSizeSpinner.setOnItemSelectedListener(this);
         newYorkCrustType = view.findViewById(R.id.newYorkCrustType);
         newYorkImageView = view.findViewById(R.id.newYorkImageView);
-        setImage("Deluxe");
+        // setImage("Deluxe");
         priceEditText = view.findViewById(R.id.newYorkPizzaPrice);
         toppings = view.findViewById(R.id.newYorkToppingList);
         toppings.setOnItemClickListener(this);
@@ -75,6 +76,7 @@ public class NewYorkStyle extends Fragment implements AdapterView.OnItemSelected
         };
         toppings.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         toppings.setAdapter(toppingAdapter);
+        changeView("Deluxe", "Small");
 
 
         // Inflate the layout for this fragment
@@ -83,12 +85,21 @@ public class NewYorkStyle extends Fragment implements AdapterView.OnItemSelected
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        switch(adapterView.getId()){
-//            case R.id.newYorkFlavorSpinner:
-        String selectedFlavor = newYorkFlavorSpinner.getSelectedItem().toString();
-        changeView(selectedFlavor);
-        //       break;
-        //    }
+        switch(adapterView.getId()){
+            case R.id.newYorkFlavorSpinner:
+                String selectedFlavor = newYorkFlavorSpinner.getSelectedItem().toString();
+                changeView(selectedFlavor, newYorkSizeSpinner.getSelectedItem().toString());
+                CharSequence flavor = selectedFlavor.concat(" selected!");
+                Toast.makeText(getContext(), flavor, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.newYorkSizeSpinner:
+                String selectedSize = newYorkSizeSpinner.getSelectedItem().toString();
+                currentSize(selectedSize);
+                CharSequence size = selectedSize.concat(" selected!");
+                Toast.makeText(getContext(), size, Toast.LENGTH_SHORT).show();
+                break;
+
+        }
     }
 
     @Override
@@ -137,12 +148,11 @@ public class NewYorkStyle extends Fragment implements AdapterView.OnItemSelected
         else{
             newYorkImageView.setImageResource(R.drawable.deluxe_ny);
         }
-        //pizzaFlavorImageView.setImage(image);
     }
 
     private void changePrice(){
         DecimalFormat format = new DecimalFormat("#.##");
-        priceEditText.setText(format.format(pizza.price()));
+        priceEditText.setText("$"+format.format(pizza.price()));
     }
 
     private void setToppings(String flavor){
@@ -170,25 +180,34 @@ public class NewYorkStyle extends Fragment implements AdapterView.OnItemSelected
         }
     }
 
+
+    private void currentSize(String size){
+        if(size.equals("Small")){
+            pizza.setSize(Size.SMALL);
+            changePrice();
+        }
+        else if(size.equals("Medium")){
+            pizza.setSize(Size.MEDIUM);
+            changePrice();
+        }
+        else if(size.equals("Large")){
+            pizza.setSize(Size.LARGE);
+            changePrice();
+        }
+    }
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
     }
 
-    public void defaultView() throws FileNotFoundException {
-//        pizzaFlavorComboBox.setValue("Build Your Own");
-//        smallButton.setSelected(true);
-//        pizza = pizzaFactory.createBuildYourOwn();
-//        crustTextField.setText(pizza.getCrust().crust());
-//        pizzaPriceTextField.setText(Double.toString(pizza.price()));
-//        selectedToppingsListView.setItems(null);
-//        setImage("Build Your Own");
-//        setToppings();
-    }
 
-    public void changeView(String flavor){
-        setImage(flavor);
+    public void changeView(String flavor, String size){
+        setPizza(flavor);
         currentCrust(flavor);
+        currentSize(size);
+        setImage(flavor);
+        changePrice();
         setToppings(flavor);
     }
 }
