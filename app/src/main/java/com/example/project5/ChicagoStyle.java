@@ -62,7 +62,7 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         chicagoSizeSpinner.setOnItemSelectedListener(this);
         chicagoCrustType = view.findViewById(R.id.chicagoCrustType);
         chicagoImageView = view.findViewById(R.id.chicagoImageView);
-        setImage("Deluxe");
+       // setImage("Deluxe");
         priceEditText = view.findViewById(R.id.chicagoPizzaPrice);
         toppings = view.findViewById(R.id.chicagoToppingList);
         toppings.setOnItemClickListener(this);
@@ -77,6 +77,7 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         };
         toppings.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         toppings.setAdapter(toppingAdapter);
+        changeView("Deluxe");
 
 
         // Inflate the layout for this fragment
@@ -85,12 +86,17 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        switch(adapterView.getId()){
-//            case R.id.chicagoFlavorSpinner:
+        switch(adapterView.getId()){
+            case R.id.chicagoFlavorSpinner:
                 String selectedFlavor = chicagoFlavorSpinner.getSelectedItem().toString();
                 changeView(selectedFlavor);
-         //       break;
-    //    }
+                break;
+            case R.id.chicagoSizeSpinner:
+                String selectedSize = chicagoSizeSpinner.getSelectedItem().toString();
+                currentSize(selectedSize);
+                break;
+
+        }
     }
 
     @Override
@@ -139,12 +145,11 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         else{
             chicagoImageView.setImageResource(R.drawable.deluxe_chicago);
         }
-        //pizzaFlavorImageView.setImage(image);
     }
 
     private void changePrice(){
         DecimalFormat format = new DecimalFormat("#.##");
-        priceEditText.setText(format.format(pizza.price()));
+        priceEditText.setText("$"+format.format(pizza.price()));
     }
 
     private void setToppings(String flavor){
@@ -172,25 +177,33 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         }
     }
 
+
+    private void currentSize(String size){
+        if(size.equals("Small")){
+            pizza.setSize(Size.SMALL);
+            changePrice();
+        }
+        else if(size.equals("Medium")){
+            pizza.setSize(Size.MEDIUM);
+            changePrice();
+        }
+        else if(size.equals("Large")){
+            pizza.setSize(Size.LARGE);
+            changePrice();
+        }
+    }
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
     }
 
-    public void defaultView() throws FileNotFoundException {
-//        pizzaFlavorComboBox.setValue("Build Your Own");
-//        smallButton.setSelected(true);
-//        pizza = pizzaFactory.createBuildYourOwn();
-//        crustTextField.setText(pizza.getCrust().crust());
-//        pizzaPriceTextField.setText(Double.toString(pizza.price()));
-//        selectedToppingsListView.setItems(null);
-//        setImage("Build Your Own");
-//        setToppings();
-   }
 
     public void changeView(String flavor){
-        setImage(flavor);
+        setPizza(flavor);
         currentCrust(flavor);
+        setImage(flavor);
+        changePrice();
         setToppings(flavor);
     }
 }
