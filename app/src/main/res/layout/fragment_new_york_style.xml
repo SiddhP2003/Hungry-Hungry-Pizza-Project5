@@ -3,14 +3,136 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FBC6C6"
     tools:context=".NewYorkStyle">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="new york" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/newYorkStylePizzaTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/newYorkStyleTitle"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.022" />
+
+        <ImageView
+            android:id="@+id/nyImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:contentDescription="testImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newYorkStylePizzaTitle"
+            tools:src="@tools:sample/avatars" />
+
+        <Spinner
+            android:id="@+id/newYorkFlavorSpinner"
+            android:layout_width="170dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="39dp"
+            android:contentDescription="@string/Flavor"
+            app:layout_constraintEnd_toStartOf="@+id/newYorkSizeSpinner"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nyImageView" />
+
+        <Spinner
+            android:id="@+id/newYorkSizeSpinner"
+            android:layout_width="170dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/Size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nyImageView" />
+
+        <TextView
+            android:id="@+id/newYorkCrustSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/Crust"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#6D4C41"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newYorkFlavorSpinner" />
+
+        <TextView
+            android:id="@+id/newYorktextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="24dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#6D4C41"
+            app:layout_constraintStart_toEndOf="@+id/newYorkCrustSize"
+            app:layout_constraintTop_toBottomOf="@+id/newYorkFlavorSpinner" />
+
+        <TextView
+            android:id="@+id/newYorkToppings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/Topping"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#6D4C41"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newYorkCrustSize" />
+
+        <ListView
+            android:id="@+id/newYorkToppingList"
+            android:layout_width="373dp"
+            android:layout_height="201dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="1dp"
+            android:fadeScrollbars="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newYorkToppings" />
+
+        <Button
+            android:id="@+id/newYorkAddButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="23dp"
+            android:text="@string/Add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newYorkToppingList" />
+
+        <EditText
+            android:id="@+id/newYorkPizzaPrice"
+            android:layout_width="139dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="46dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newYorkToppingList" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

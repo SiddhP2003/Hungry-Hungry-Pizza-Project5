@@ -7,7 +7,6 @@
     android:background="#FBC6C6"
     tools:context=".ChicagoStyle">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -33,8 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toTopOf="@+id/flavorSpinner"
+            android:contentDescription="testImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,33 +40,99 @@
             tools:src="@tools:sample/avatars" />
 
         <Spinner
-            android:id="@+id/flavorSpinner"
+            android:id="@+id/chicagoFlavorSpinner"
             android:layout_width="170dp"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toStartOf="@+id/sizeSpinner"
+            android:layout_marginEnd="39dp"
+            android:contentDescription="@string/Flavor"
+            app:layout_constraintEnd_toStartOf="@+id/chicagoSizeSpinner"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <Spinner
-            android:id="@+id/sizeSpinner"
+            android:id="@+id/chicagoSizeSpinner"
             android:layout_width="170dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="25dp"
+            android:layout_height="48dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="46dp"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/Size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/flavorSpinner"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <TextView
-            android:id="@+id/crustTextView"
+            android:id="@+id/chicagoCrustSize"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
             android:text="@string/Crust"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="28dp"
-            tools:layout_editor_absoluteY="268dp" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#6D4C41"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chicagoFlavorSpinner" />
+
+        <TextView
+            android:id="@+id/chicagoTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="24dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#6D4C41"
+            app:layout_constraintStart_toEndOf="@+id/chicagoCrustSize"
+            app:layout_constraintTop_toBottomOf="@+id/chicagoFlavorSpinner" />
+
+        <TextView
+            android:id="@+id/chicagoToppings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/Topping"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#6D4C41"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chicagoCrustSize" />
+
+        <ListView
+            android:id="@+id/chicagoToppingList"
+            android:layout_width="373dp"
+            android:layout_height="201dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="1dp"
+            android:fadeScrollbars="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.454"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chicagoToppings" />
+
+        <Button
+            android:id="@+id/chicagoAddButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="23dp"
+            android:text="@string/Add"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chicagoToppingList" />
+
+        <EditText
+            android:id="@+id/ChicagoPizzaPrice"
+            android:layout_width="139dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="46dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chicagoToppingList" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
