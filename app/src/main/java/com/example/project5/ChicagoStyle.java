@@ -119,7 +119,7 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         switch(adapterView.getId()){
             case R.id.chicagoFlavorSpinner:
-                String selectedFlavor = flavorSpinner.getSelectedItem().toString();
+                String selectedFlavor = chicagoFlavorSpinner.getSelectedItem().toString();
         }
     }
 
@@ -145,29 +145,29 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
 
     private void currentCrust(String flavor){
         if(flavor.equals("Build Your Own") ||flavor.equals("BBQ Chicken")){
-            crustTextView.setText(Crust.PAN.crust());
+            chicagoCrustType.setText(Crust.PAN.crust());
         }
         else if(flavor.equals("Deluxe")){
-            crustTextView.setText(Crust.DEEPDISH.crust());
+            chicagoCrustType.setText(Crust.DEEPDISH.crust());
         }
         else if(flavor.equals("Meatzza")){
-            crustTextView.setText(Crust.STUFFED.crust());
+            chicagoCrustType.setText(Crust.STUFFED.crust());
         }
     }
 
     private void setImage(String flavor)  {
         if(flavor.equalsIgnoreCase("Build Your Own")){
-            pizzaFlavorImageView.setImageResource(R.drawable.build_your_own_chicago);
+            chicagoImageView.setImageResource(R.drawable.build_your_own_chicago);
 
         }
         else if(flavor.equalsIgnoreCase("Meatzza")){
-            pizzaFlavorImageView.setImageResource(R.drawable.meatzza_chicago);
+            chicagoImageView.setImageResource(R.drawable.meatzza_chicago);
         }
         else if(flavor.equalsIgnoreCase("BBQ Chicken")){
-            pizzaFlavorImageView.setImageResource(R.drawable.bbq_chicken_chicago);
+            chicagoImageView.setImageResource(R.drawable.bbq_chicken_chicago);
         }
         else{
-            pizzaFlavorImageView.setImageResource(R.drawable.deluxe_chicago);
+            chicagoImageView.setImageResource(R.drawable.deluxe_chicago);
         }
         //pizzaFlavorImageView.setImage(image);
     }
