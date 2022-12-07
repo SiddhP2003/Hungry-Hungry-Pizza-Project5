@@ -102,7 +102,7 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         chicagoSizeSpinner.setAdapter(sizeAdapter);
         chicagoCrustType = view.findViewById(R.id.chicagoCrustType);
         chicagoImageView = view.findViewById(R.id.chicagoImageView);
-        setImage("Build Your Own");
+        setImage("Deluxe");
         priceEditText = view.findViewById(R.id.chicagoPizzaPrice);
         toppings = view.findViewById(R.id.chicagoToppingList);
         toppings.setOnItemClickListener(this);
