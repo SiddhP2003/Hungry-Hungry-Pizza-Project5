@@ -66,7 +66,15 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         priceEditText = view.findViewById(R.id.chicagoPizzaPrice);
         toppings = view.findViewById(R.id.chicagoToppingList);
         toppings.setOnItemClickListener(this);
-        toppingAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_multiple_choice,toppingList);
+        toppingAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_multiple_choice,toppingList){
+            public boolean isEnabled(int position)
+            {
+                if(chicagoFlavorSpinner.getSelectedItem().toString().equals("Build Your Own")){
+                    return true;
+                }
+                return false;
+            }
+        };
         toppings.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         toppings.setAdapter(toppingAdapter);
 
@@ -142,14 +150,13 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
     private void setToppings(String flavor){
         for(int i = 0; i < toppingAdapter.getCount(); i++){
             toppings.setItemChecked(i,false);
-            toppings.setEnabled(true);
         }
         if(flavor.equals("BBQ Chicken")){
             toppings.setItemChecked(1,true);
             toppings.setItemChecked(2,true);
             toppings.setItemChecked(6,true);
             toppings.setItemChecked(9,true);
-            toppings.setEnabled(false);
+
         }
         else if(flavor.equals("Deluxe")){
             toppings.setItemChecked(4,true);
@@ -157,14 +164,14 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
             toppings.setItemChecked(7,true);
             toppings.setItemChecked(8,true);
             toppings.setItemChecked(9,true);
-            toppings.setEnabled(false);
+
+
         }
         else if(flavor.equals("Meatzza")){
             toppings.setItemChecked(4,true);
             toppings.setItemChecked(0,true);
             toppings.setItemChecked(3,true);
             toppings.setItemChecked(8,true);
-            toppings.setEnabled(false);
         }
     }
 
