@@ -78,7 +78,7 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         };
         toppings.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         toppings.setAdapter(toppingAdapter);
-        changeView("Deluxe");
+        changeView("Deluxe", "Small");
 
 
         // Inflate the layout for this fragment
@@ -90,13 +90,15 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         switch(adapterView.getId()){
             case R.id.chicagoFlavorSpinner:
                 String selectedFlavor = chicagoFlavorSpinner.getSelectedItem().toString();
-                changeView(selectedFlavor);
-                CharSequence text = selectedFlavor.concat(" selected!");
-                Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
+                changeView(selectedFlavor, chicagoSizeSpinner.getSelectedItem().toString());
+                CharSequence flavor = selectedFlavor.concat(" selected!");
+                Toast.makeText(getContext(), flavor, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.chicagoSizeSpinner:
                 String selectedSize = chicagoSizeSpinner.getSelectedItem().toString();
                 currentSize(selectedSize);
+                CharSequence size = selectedSize.concat(" selected!");
+                Toast.makeText(getContext(), size, Toast.LENGTH_SHORT).show();
                 break;
 
         }
@@ -202,9 +204,10 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
     }
 
 
-    public void changeView(String flavor){
+    public void changeView(String flavor, String size){
         setPizza(flavor);
         currentCrust(flavor);
+        currentSize(size);
         setImage(flavor);
         changePrice();
         setToppings(flavor);
