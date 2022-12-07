@@ -64,7 +64,15 @@ public class NewYorkStyle extends Fragment implements AdapterView.OnItemSelected
         priceEditText = view.findViewById(R.id.newYorkPizzaPrice);
         toppings = view.findViewById(R.id.newYorkToppingList);
         toppings.setOnItemClickListener(this);
-        toppingAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_multiple_choice,toppingList);
+        toppingAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_multiple_choice,toppingList){
+            public boolean isEnabled(int position)
+            {
+                if(newYorkFlavorSpinner.getSelectedItem().toString().equals("Build Your Own")){
+                    return true;
+                }
+                return false;
+            }
+        };
         toppings.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         toppings.setAdapter(toppingAdapter);
 
@@ -138,26 +146,27 @@ public class NewYorkStyle extends Fragment implements AdapterView.OnItemSelected
     }
 
     private void setToppings(String flavor){
-        if(flavor.equals("Build Your Own")){
-            for(int i = 0; i < toppingAdapter.getCount(); i++){
-                toppings.setItemChecked(i,true);
-            }
+        for(int i = 0; i < toppingAdapter.getCount(); i++){
+            toppings.setItemChecked(i,false);
         }
-        else if(flavor.equals("BBQ Chicken")){
-            for(int i = 0; i < toppingAdapter.getCount(); i++){
-                toppings.setItemChecked(i,false);
-            }
+        if(flavor.equals("BBQ Chicken")){
+            toppings.setItemChecked(1,true);
+            toppings.setItemChecked(2,true);
+            toppings.setItemChecked(6,true);
+            toppings.setItemChecked(9,true);
         }
         else if(flavor.equals("Deluxe")){
-            for(int i = 0; i < toppingAdapter.getCount(); i++){
-                toppings.setItemChecked(i,false);
-            }
+            toppings.setItemChecked(4,true);
+            toppings.setItemChecked(5,true);
+            toppings.setItemChecked(7,true);
+            toppings.setItemChecked(8,true);
+            toppings.setItemChecked(9,true);
         }
         else if(flavor.equals("Meatzza")){
-            for(int i = 0; i < toppingAdapter.getCount(); i++){
-                toppings.setItemChecked(i,false);
-            }
-
+            toppings.setItemChecked(4,true);
+            toppings.setItemChecked(0,true);
+            toppings.setItemChecked(3,true);
+            toppings.setItemChecked(8,true);
         }
     }
 
@@ -180,5 +189,6 @@ public class NewYorkStyle extends Fragment implements AdapterView.OnItemSelected
     public void changeView(String flavor){
         setImage(flavor);
         currentCrust(flavor);
+        setToppings(flavor);
     }
 }
