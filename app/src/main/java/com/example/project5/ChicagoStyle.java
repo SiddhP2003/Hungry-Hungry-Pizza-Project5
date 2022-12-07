@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -90,6 +91,8 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
             case R.id.chicagoFlavorSpinner:
                 String selectedFlavor = chicagoFlavorSpinner.getSelectedItem().toString();
                 changeView(selectedFlavor);
+                CharSequence text = selectedFlavor.concat(" selected!");
+                Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.chicagoSizeSpinner:
                 String selectedSize = chicagoSizeSpinner.getSelectedItem().toString();
