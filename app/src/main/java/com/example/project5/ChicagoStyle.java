@@ -156,7 +156,6 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
             toppings.setItemChecked(2,true);
             toppings.setItemChecked(6,true);
             toppings.setItemChecked(9,true);
-
         }
         else if(flavor.equals("Deluxe")){
             toppings.setItemChecked(4,true);
@@ -164,8 +163,6 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
             toppings.setItemChecked(7,true);
             toppings.setItemChecked(8,true);
             toppings.setItemChecked(9,true);
-
-
         }
         else if(flavor.equals("Meatzza")){
             toppings.setItemChecked(4,true);
