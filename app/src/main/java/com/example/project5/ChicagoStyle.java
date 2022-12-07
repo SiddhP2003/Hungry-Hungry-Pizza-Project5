@@ -103,12 +103,12 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         chicagoCrustType = view.findViewById(R.id.chicagoCrustType);
         chicagoImageView = view.findViewById(R.id.chicagoImageView);
         setImage("Build Your Own");
-//        //priceEditText = view.findViewById(R.id.)
-//        //toppings = view.findViewById(R.id);
-//        toppings.setOnItemClickListener(this);
-//        toppingAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_multiple_choice,toppingList);
-//        toppings.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-//        toppings.setAdapter(toppingAdapter);
+        priceEditText = view.findViewById(R.id.chicagoPizzaPrice);
+        toppings = view.findViewById(R.id.chicagoToppingList);
+        toppings.setOnItemClickListener(this);
+        toppingAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_multiple_choice,toppingList);
+        toppings.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        toppings.setAdapter(toppingAdapter);
 
 
         // Inflate the layout for this fragment
