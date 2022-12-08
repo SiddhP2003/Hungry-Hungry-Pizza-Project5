@@ -26,13 +26,11 @@
                 android:id="@+id/priceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="21dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="70dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="38dp"
+                android:layout_marginEnd="38dp"
                 android:text="@string/PizzaPrice"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/currentOrderRemoveButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/toppingsTextView"
                 app:layout_constraintTop_toBottomOf="@+id/sizeTextView" />
@@ -41,16 +39,17 @@
                 android:id="@+id/sizeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="23dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="56dp"
                 android:layout_marginTop="27dp"
-                android:layout_marginEnd="76dp"
+                android:layout_marginEnd="44dp"
                 android:layout_marginBottom="35dp"
                 android:text="@string/PizzaSize"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toTopOf="@+id/priceTextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/toppingsTextView"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/toppingsTextView"
@@ -65,37 +64,35 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/currentOrderRemoveButton"
                 app:layout_constraintStart_toEndOf="@+id/styleAndCrustTextView"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/styleAndCrustTextView"
                 android:layout_width="117dp"
-                android:layout_height="55dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="49dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="20dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/PizzaStyleAndCrust"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/toppingsTextView"
+                app:layout_constraintBottom_toTopOf="@+id/flavorTextView"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/flavorTextView" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/flavorTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="17dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="46dp"
+                android:layout_marginEnd="75dp"
+                android:layout_marginBottom="96dp"
                 android:text="@string/PizzaFlavor"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toTopOf="@+id/styleAndCrustTextView"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/toppingsTextView"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/currentOrderRemoveButton"
@@ -109,6 +106,34 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/toppingsTextView"
                 app:layout_constraintTop_toBottomOf="@+id/priceTextView" />
+
+            <View
+                android:id="@+id/flavorToppingsDivider"
+                android:layout_width="5dp"
+                android:layout_height="195dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="1dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/toppingsTextView"
+                app:layout_constraintStart_toEndOf="@+id/styleAndCrustTextView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/toppingsSizeDivider"
+                android:layout_width="5dp"
+                android:layout_height="195dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="1dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/currentOrderRemoveButton"
+                app:layout_constraintStart_toEndOf="@+id/toppingsTextView"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

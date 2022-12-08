@@ -76,7 +76,7 @@ public class CurrentOrder extends Fragment {
         styleAndCrust = "("+style+
                 " - " + MainActivity.order.getPizzas().get(i).getCrust() + ")";
         for(int j = 0; j < MainActivity.order.getPizzas().get(i).getToppings().size(); j++){
-           toppings = toppings.concat(MainActivity.order.getPizzas().get(i).getToppings().get(j) + ",");
+           toppings = toppings.concat(MainActivity.order.getPizzas().get(i).getToppings().get(j) + ", ");
         }
         size = MainActivity.order.getPizzas().get(i).getSize().name();
         price = "$"+format.format(MainActivity.order.getPizzas().get(i).price());
