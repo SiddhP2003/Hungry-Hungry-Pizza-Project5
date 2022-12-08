@@ -19,10 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
     //private ActivityMainBinding binding;
     BottomNavigationView navView;
-    ChicagoStyle chicagoStyle = new ChicagoStyle();
-    NewYorkStyle newYorkStyle = new NewYorkStyle();
-    CurrentOrder currentOrder = new CurrentOrder();
-    StoreOrders storeOrders = new StoreOrders();
+    public static ChicagoStyle chicagoStyle = new ChicagoStyle();
+    public static NewYorkStyle newYorkStyle = new NewYorkStyle();
+    public static CurrentOrder currentOrder = new CurrentOrder();
+    public static StoreOrders storeOrders = new StoreOrders();
     private int currentOrderNumber = 1;
     public static Order order = new Order();
     public static StoreOrder allOrders = new StoreOrder();
@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
     public int getOrderNumber(){
         return currentOrderNumber;
+    }
+
+    public void updateCurrentOrder(){
+        currentOrder.updateCurrentPrice();
     }
 
 }
