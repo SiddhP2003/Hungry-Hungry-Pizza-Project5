@@ -15,15 +15,15 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/currentOrderRecyclerView"
-            android:layout_width="397dp"
-            android:layout_height="371dp"
+            android:layout_width="398dp"
+            android:layout_height="346dp"
             android:layout_marginStart="2dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginBottom="6dp"
-            app:layout_constraintBottom_toTopOf="@+id/currentOrderSubTotal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.6"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topDivider" />
 
         <TextView
             android:id="@+id/currentOrderOrderNumberHeading"
@@ -60,20 +60,20 @@
             android:id="@+id/currentOrderSubTotalHeading"
             android:layout_width="83dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="11dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="27dp"
             android:text="@string/Subtotal"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/currentOrderSubTotal"
-            app:layout_constraintTop_toBottomOf="@+id/currentOrderRecyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/middleDivider" />
 
         <TextView
             android:id="@+id/currentOrderSalesTaxHeading"
             android:layout_width="98dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="27dp"
-            android:layout_marginEnd="11dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="27dp"
             android:text="@string/SalesTax"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -84,8 +84,8 @@
             android:id="@+id/currentOrderOrderTotalHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="11dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="27dp"
             android:text="@string/OrderTotal"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -126,26 +126,26 @@
             android:id="@+id/currentOrderSalesTax"
             android:layout_width="122dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="78dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="60dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/CurrentSalesTax"
-            app:layout_constraintBottom_toTopOf="@+id/currentOrderOrderTotal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentOrderSubTotal"
             tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/currentOrderSubTotal"
             android:layout_width="122dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="78dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="60dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/CurrentSubTotal"
-            app:layout_constraintBottom_toTopOf="@+id/currentOrderSalesTax"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/middleDivider"
             tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
@@ -153,7 +153,7 @@
             android:layout_width="122dp"
             android:layout_height="45dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="78dp"
+            android:layout_marginEnd="60dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/CurrentOrderTotal"
@@ -175,19 +175,21 @@
             android:id="@+id/middleDivider"
             android:layout_width="409dp"
             android:layout_height="5dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="15dp"
             android:background="@color/maroon"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="430dp" />
+            app:layout_constraintBottom_toTopOf="@+id/currentOrderSubTotal"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <View
             android:id="@+id/bottomDivider"
             android:layout_width="409dp"
             android:layout_height="5dp"
-            android:layout_marginTop="17dp"
             android:layout_marginEnd="1dp"
+            android:layout_marginBottom="11dp"
             android:background="@color/maroon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/currentOrderOrderTotal" />
+            app:layout_constraintBottom_toTopOf="@+id/currentOrderClearOrderButton"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
