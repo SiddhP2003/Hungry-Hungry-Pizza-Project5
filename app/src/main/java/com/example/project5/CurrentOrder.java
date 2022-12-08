@@ -43,6 +43,7 @@ public class CurrentOrder extends Fragment implements  View.OnClickListener{
         currentOrderOrderTotal = view.findViewById(R.id.currentOrderOrderTotal);
         currentOrderClearOrderButton = view.findViewById(R.id.currentOrderClearOrderButton);
         currentOrderClearOrderButton.setOnClickListener(this);
+        currentOrderModels.clear();
         setUpCurrentOrderModels();
         currentOrderAdapter = new CurrentOrderRecyclerViewAdapter(this.getActivity(),currentOrderModels);
         currentOrderRecyclerView.setAdapter(currentOrderAdapter);
