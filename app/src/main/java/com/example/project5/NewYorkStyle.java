@@ -276,16 +276,12 @@ public class NewYorkStyle extends Fragment implements AdapterView.OnItemSelected
                 toppings.setItemChecked(i,false);
             }
             else{
-                CharSequence addedTopping = selectedTopping.concat(" Added!");
-                Toast.makeText(getContext(), addedTopping, Toast.LENGTH_SHORT).show();
                 changePrice();
             }
         }
         else if(!toppings.isItemChecked(i)){
             String selectedTopping = adapterView.getAdapter().getItem(i).toString();
             pizza.remove(getTopping(selectedTopping));
-            CharSequence removedTopping = selectedTopping.concat(" Removed!");
-            Toast.makeText(getContext(), removedTopping, Toast.LENGTH_SHORT).show();
             changePrice();
         }
     }
