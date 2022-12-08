@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  * Use the {@link CurrentOrder#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CurrentOrder extends Fragment {
+public class CurrentOrder extends Fragment implements  View.OnClickListener{
         ArrayList<CurrentOrderModel> currentOrderModels = new ArrayList<>();
         RecyclerView currentOrderRecyclerView;
         CurrentOrderRecyclerViewAdapter currentOrderAdapter;
@@ -28,6 +29,7 @@ public class CurrentOrder extends Fragment {
         EditText currentOrderSubTotal;
         EditText currentOrderSalesTax;
         EditText currentOrderOrderTotal;
+        Button currentOrderClearOrderButton;
     private final DecimalFormat format = new DecimalFormat("#.##");
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +41,8 @@ public class CurrentOrder extends Fragment {
         currentOrderSubTotal = view.findViewById(R.id.currentOrderSubTotal);
         currentOrderSalesTax = view.findViewById(R.id.currentOrderSalesTax);
         currentOrderOrderTotal = view.findViewById(R.id.currentOrderOrderTotal);
+        currentOrderClearOrderButton = view.findViewById(R.id.currentOrderClearOrderButton);
+        currentOrderClearOrderButton.setOnClickListener(this);
         setUpCurrentOrderModels();
         currentOrderAdapter = new CurrentOrderRecyclerViewAdapter(this.getActivity(),currentOrderModels);
         currentOrderRecyclerView.setAdapter(currentOrderAdapter);
@@ -59,9 +63,10 @@ public class CurrentOrder extends Fragment {
     String style = "";
 
     private void setUpCurrentOrderModels(){
-            for(int i = 0; i < MainActivity.order.getPizzas().size(); i++){
+//        if(currentOrderAdapter.currentOrderModels.size() != MainActivity.order.getPizzas().size() && currentOrderAdapter.currentOrderModels.size() != 0) {
+            for (int i = 0; i < MainActivity.order.getPizzas().size(); i++) {
                 String flavor = MainActivity.order.getPizzas().get(i).getFlavor();
-                String style= "";
+                String style = "";
                 String styleAndCrust;
                 String toppings = "";
                 String size;
@@ -73,16 +78,17 @@ public class CurrentOrder extends Fragment {
 //            style = "New York Style";
 //        }
                 style = MainActivity.order.getPizzas().get(i).getStyle();
-        styleAndCrust = "("+style+
-                " - " + MainActivity.order.getPizzas().get(i).getCrust() + ")";
-        for(int j = 0; j < MainActivity.order.getPizzas().get(i).getToppings().size(); j++){
-           toppings = toppings.concat(MainActivity.order.getPizzas().get(i).getToppings().get(j) + ", ");
-        }
-        size = MainActivity.order.getPizzas().get(i).getSize().name();
-        price = "$"+format.format(MainActivity.order.getPizzas().get(i).price());
-        currentOrderModels.add(new CurrentOrderModel(flavor,styleAndCrust,toppings,size,price));
+                styleAndCrust = "(" + style +
+                        " - " + MainActivity.order.getPizzas().get(i).getCrust() + ")";
+                for (int j = 0; j < MainActivity.order.getPizzas().get(i).getToppings().size(); j++) {
+                    toppings = toppings.concat(MainActivity.order.getPizzas().get(i).getToppings().get(j) + ", ");
+                }
+                size = MainActivity.order.getPizzas().get(i).getSize().name();
+                price = "$" + format.format(MainActivity.order.getPizzas().get(i).price());
+                currentOrderModels.add(new CurrentOrderModel(flavor, styleAndCrust, toppings, size, price));
 
             }
+    //    }
     }
 
 
@@ -94,5 +100,29 @@ public class CurrentOrder extends Fragment {
         currentOrderSubTotal.setText("$"+format.format(MainActivity.order.getSubTotal()));
         currentOrderSalesTax.setText("$"+format.format(MainActivity.order.getSalesTax()));
         currentOrderOrderTotal.setText("$"+format.format(MainActivity.order.getOrderTotal()));
+    }
+
+    public void clearOrder(){
+        for(int i = 0; i < MainActivity.order.getPizzas().size(); i++){
+            currentOrderAdapter.currentOrderModels.remove(0);
+            currentOrderAdapter.notifyItemRemoved(0);
+        }
+        MainActivity.order.getPizzas().removeAll(MainActivity.order.getPizzas());
+        MainActivity.currentOrder.updateCurrentPrice();
+//        currentOrderAdapter.currentOrderModels.removeAll(currentOrderModels);
+//        helperAdapter.currentOrderModels.remove(getAdapterPosition());
+//        MainActivity.order.getPizzas().remove(getAdapterPosition());
+//        MainActivity.currentOrder.updateCurrentPrice();
+//        helperAdapter.notifyItemRemoved(getAdapterPosition());
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.currentOrderClearOrderButton:
+                clearOrder();
+                break;
+        }
     }
 }
