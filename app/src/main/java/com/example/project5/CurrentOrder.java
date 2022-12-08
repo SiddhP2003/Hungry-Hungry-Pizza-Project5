@@ -30,6 +30,7 @@ public class CurrentOrder extends Fragment implements  View.OnClickListener{
         EditText currentOrderSalesTax;
         EditText currentOrderOrderTotal;
         Button currentOrderClearOrderButton;
+        Button currentOrderPlaceOrderButton;
     private final DecimalFormat format = new DecimalFormat("#.##");
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,7 +43,9 @@ public class CurrentOrder extends Fragment implements  View.OnClickListener{
         currentOrderSalesTax = view.findViewById(R.id.currentOrderSalesTax);
         currentOrderOrderTotal = view.findViewById(R.id.currentOrderOrderTotal);
         currentOrderClearOrderButton = view.findViewById(R.id.currentOrderClearOrderButton);
+        currentOrderPlaceOrderButton = view.findViewById(R.id.currentOrderPlaceOrderButton);
         currentOrderClearOrderButton.setOnClickListener(this);
+        currentOrderPlaceOrderButton.setOnClickListener(this);
         currentOrderModels.clear();
         setUpCurrentOrderModels();
         currentOrderAdapter = new CurrentOrderRecyclerViewAdapter(this.getActivity(),currentOrderModels);
@@ -117,12 +120,39 @@ public class CurrentOrder extends Fragment implements  View.OnClickListener{
 //        helperAdapter.notifyItemRemoved(getAdapterPosition());
     }
 
+    public void placeOrder(){
+        if(MainActivity.order.getPizzas().size() > 0) {
+            MainActivity.allOrders.getOrders().add(MainActivity.order);
+            for(int i = 0; i < MainActivity.order.getPizzas().size(); i++){
+                currentOrderAdapter.currentOrderModels.remove(0);
+                currentOrderAdapter.notifyItemRemoved(0);
+            }
+           // mainViewController.getAllOrdersList().add(currentOrder);
+           // mainViewController.getOrderNumbers().add(Integer.toString(mainViewController.getOrderNumber()));
+            MainActivity.orderNumbers.add(Integer.toString(MainActivity.currentOrderNumber));
+            MainActivity.currentOrderNumber++;
+            MainActivity.order = new Order();
+            MainActivity.order.setOrderNumber(MainActivity.currentOrderNumber);
+       //     mainViewController.newOrder();
+          //  setCurrentOrder(mainViewController.getOrder());
+          //  mainViewController.getOrderList().removeAll();
+            //currentOrderListView.getItems().clear();
+            updateCurrentPrice();
+           // updateList();
+            setOrderNumber();
+        }
+    }
+
+
 
     @Override
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.currentOrderClearOrderButton:
                 clearOrder();
+                break;
+            case R.id.currentOrderPlaceOrderButton:
+                placeOrder();
                 break;
         }
     }

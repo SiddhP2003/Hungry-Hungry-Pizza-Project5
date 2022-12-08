@@ -15,6 +15,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.project5.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     //private ActivityMainBinding binding;
@@ -23,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
     public static NewYorkStyle newYorkStyle = new NewYorkStyle();
     public static CurrentOrder currentOrder = new CurrentOrder();
     public static StoreOrders storeOrders = new StoreOrders();
-    private int currentOrderNumber = 1;
+    public static int currentOrderNumber = 1;
     public static Order order = new Order();
     public static StoreOrder allOrders = new StoreOrder();
+    public static ArrayList<String> orderNumbers = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,12 +62,6 @@ public class MainActivity extends AppCompatActivity {
         order.setOrderNumber(currentOrderNumber);
 
 
-    }
-
-    public void newOrder(){
-        currentOrderNumber++;
-        order = new Order();
-        order.setOrderNumber(currentOrderNumber);
     }
 
     public int getOrderNumber(){

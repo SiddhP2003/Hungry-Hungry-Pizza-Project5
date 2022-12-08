@@ -31,5 +31,9 @@
     <string name="PizzaSize">Size</string>
     <string name="PizzaPrice">Price</string>
     <string name="Remove">Remove</string>
+    <string name="AllOrderNumber">Order Number:</string>
+    <string name="AllOrderTotal">Order Total (Tax Included):</string>
+    <string name="StoreOrderNumber">Number</string>
+    <string name="CancelOrder">Cancel Order</string>
 
 </resources>
