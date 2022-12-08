@@ -46,6 +46,11 @@ public class Meatzza extends Pizza{
                 currentPizza.concat(this.getSize().name()+","+"$"+format.format(this.price()));
         return currentPizza;
     }
+
+    /**
+     * Returns the style of the Meatzza pizza.
+     * @return String, style of pizza (either Chicago or New York style)
+     */
     @Override
     public String getStyle(){
         if(this.getCrust().equals(Crust.STUFFED)){
@@ -55,6 +60,7 @@ public class Meatzza extends Pizza{
             return "New York Style";
         }
     }
+
     /**
      * Returns the price of the pizza depending on the size
      * @return double, one of three prices based on pizza size
@@ -99,6 +105,10 @@ public class Meatzza extends Pizza{
         return false;
     }
 
+    /**
+     * Returns the flavor of the pizza, which is Meatzza.
+     * @return String, pizza flavor (Meatzza)
+     */
     @Override
     public String getFlavor() {
         return "Meatzza";

@@ -47,10 +47,19 @@ public class Deluxe extends Pizza{
         return currentPizza;
     }
 
+    /**
+     * Returns the flavor of the pizza, which is Deluxe.
+     * @return String, the flavor (Deluxe)
+     */
     @Override
     public String getFlavor() {
         return "Deluxe";
     }
+
+    /**
+     * Returns the style of the Deluxe pizza.
+     * @return String, the style of the pizza, either Chicago or New York style
+     */
     @Override
     public String getStyle(){
         if(this.getCrust().equals(Crust.DEEPDISH)){

@@ -17,9 +17,14 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 
+/**
+ An activity that acts to set up the app.
+ Sets up the bottom navigation view bar that allows the user to navigate through the app (chicago
+ style pizza, new york style pizza, current order, and store orders). The initial fragment shown
+ is the Chicago style pizza
+ @author Siddh Parmar, Yash Patel
+ */
 public class MainActivity extends AppCompatActivity {
-
-    //private ActivityMainBinding binding;
     BottomNavigationView navView;
     public static ChicagoStyle chicagoStyle = new ChicagoStyle();
     public static NewYorkStyle newYorkStyle = new NewYorkStyle();
@@ -29,14 +34,18 @@ public class MainActivity extends AppCompatActivity {
     public static Order order = new Order();
     public static StoreOrder allOrders = new StoreOrder();
     public static ArrayList<String> orderNumbers = new ArrayList<>();
+
+    /**
+     * Creates the view that will first be shown when the app is launched, as well as setting up
+     * the bottom navigation bar that will help the user navigate among different fragments
+     * @param savedInstanceState, a Bundle that allows activity to restore itself from previous data
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //binding = ActivityMainBinding.inflate(getLayoutInflater());
-        //setContentView(binding.getRoot());
 
-        navView = (BottomNavigationView)findViewById(R.id.nav_view);
+        navView = findViewById(R.id.nav_view);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, chicagoStyle).commit();
         navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -62,14 +71,6 @@ public class MainActivity extends AppCompatActivity {
         order.setOrderNumber(currentOrderNumber);
 
 
-    }
-
-    public int getOrderNumber(){
-        return currentOrderNumber;
-    }
-
-    public void updateCurrentOrder(){
-        currentOrder.updateCurrentPrice();
     }
 
 }

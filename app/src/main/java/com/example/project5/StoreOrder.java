@@ -52,25 +52,6 @@ public class StoreOrder implements Customizable {
     }
 
     /**
-     * Exports the Store orders to an external file
-     */
-    public void export() throws IOException {
-        DecimalFormat format = new DecimalFormat("#.##");
-        File exportFile = new File("StoreOrders.txt");
-        PrintWriter printWriter = new PrintWriter(exportFile);
-        for(int i = 0; i < orders.size(); i++){
-            for(int j = 0; j < orders.get(i).getPizzas().size(); j++){
-                printWriter.println(orders.get(i).getPizzas().get(j).printPizza());
-            }
-            printWriter.print("Price(with Tax):" + format.format(orders.get(i).getOrderTotal()));
-            printWriter.println();
-            printWriter.println();
-        }
-        printWriter.close();
-
-    }
-
-    /**
      * Returns the various orders made in the pizzeria
      * @return ArrayList<Order>, the orders that have been placed
      */
