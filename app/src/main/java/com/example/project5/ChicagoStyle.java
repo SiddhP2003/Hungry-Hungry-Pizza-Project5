@@ -255,6 +255,7 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         AlertDialog.Builder alert = new AlertDialog.Builder(this.getActivity());
         alert.setTitle("Pizza Added To Order");
         AlertDialog dialog = alert.create();
+        dialog.setIcon(R.drawable.ic_launcher_foreground);
         dialog.show();
     }
 }
