@@ -1,5 +1,9 @@
 package com.example.project5;
 
+/**
+ * Class that manages the model for the RecyclerView row.
+ * @author Siddh Parmar, Yash Patel
+ */
 public class CurrentOrderModel {
     String flavor;
     String styleAndCrust;

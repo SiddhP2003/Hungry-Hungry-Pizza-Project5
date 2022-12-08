@@ -11,15 +11,31 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ * Class that holds and manages the items in the RecyclerView for StoreOrder.
+ * @author Siddh Parmar, Yash Patel
+ */
 public class StoreOrderRecyclerViewAdapter extends RecyclerView.Adapter<StoreOrderRecyclerViewAdapter.MyViewHolder>{
 
     Context context;
     ArrayList<CurrentOrderModel> currentOrderModels;
+
+    /**
+     * Creates an object of StoreOrderRecyclerViewAdapter.
+     * @param context Context of the adapter.
+     * @param currentOrderModels ArrayList of models used in the adapter.
+     */
     public StoreOrderRecyclerViewAdapter(Context context, ArrayList<CurrentOrderModel> currentOrderModels) {
         this.context = context;
         this.currentOrderModels = currentOrderModels;
     }
 
+    /**
+     * Inflates the RecyclerView with the recycler_row layout.
+     * @param parent ViewGroup that holds the view.
+     * @param viewType Type of view.
+     * @return StoreOrderRecyclerViewAdapter.MyViewHolder with the recycler row layout.
+     */
     @NonNull
     @Override
     public StoreOrderRecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -28,6 +44,11 @@ public class StoreOrderRecyclerViewAdapter extends RecyclerView.Adapter<StoreOrd
         return new StoreOrderRecyclerViewAdapter.MyViewHolder(view,this);
     }
 
+    /**
+     * Sets the text for each part of the layout.
+     * @param holder MyViewHolder that holds the layout.
+     * @param position Row of the RecyclerView.
+     */
     @Override
     public void onBindViewHolder(@NonNull StoreOrderRecyclerViewAdapter.MyViewHolder holder, int position) {
         holder.flavorTextView.setText(currentOrderModels.get(position).getFlavor());
@@ -37,11 +58,18 @@ public class StoreOrderRecyclerViewAdapter extends RecyclerView.Adapter<StoreOrd
         holder.priceTextView.setText(currentOrderModels.get(position).getPrice());
     }
 
+    /**
+     * Returns the size of the currentOrderModels.
+     * @return int containing the size of currentOrderModels.
+     */
     @Override
     public int getItemCount() {
         return currentOrderModels.size();
     }
 
+    /**
+     * Class that holds the view for the RecyclerView
+     */
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         StoreOrderRecyclerViewAdapter helperAdapter;
         TextView flavorTextView;
@@ -49,6 +77,12 @@ public class StoreOrderRecyclerViewAdapter extends RecyclerView.Adapter<StoreOrd
         TextView toppingsTextView;
         TextView sizeTextView;
         TextView priceTextView;
+
+        /**
+         * Creates an object of MyViewHolder.
+         * @param itemView View of the item.
+         * @param helperAdapter Adapter that holds the items for the RecyclerView of type StoreOrderRecyclerViewAdapter.
+         */
         public MyViewHolder(@NonNull View itemView, StoreOrderRecyclerViewAdapter helperAdapter ) {
             super(itemView);
             flavorTextView = itemView.findViewById(R.id.flavorTextView);
@@ -58,12 +92,6 @@ public class StoreOrderRecyclerViewAdapter extends RecyclerView.Adapter<StoreOrd
             priceTextView = itemView.findViewById(R.id.priceTextView);
             itemView.findViewById(R.id.currentOrderRemoveButton).setVisibility(View.INVISIBLE);
             itemView.findViewById(R.id.currentOrderRemoveButton).setClickable(false);
-                    //setOnClickListener(view -> {
-//                helperAdapter.currentOrderModels.remove(getAdapterPosition());
-//                MainActivity.order.getPizzas().remove(getAdapterPosition());
-//                MainActivity.currentOrder.updateCurrentPrice();
-//                helperAdapter.notifyItemRemoved(getAdapterPosition());
-//            });
         }
 
     }

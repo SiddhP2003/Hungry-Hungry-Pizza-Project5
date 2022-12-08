@@ -69,8 +69,16 @@ public abstract class Pizza implements Customizable {
      */
     public abstract String printPizza();
 
+    /**
+     * Returns the flavor of the pizza.
+     * @return String containing the pizza flavor.
+     */
     public abstract String getFlavor();
 
+    /**
+     * Returns the style of the pizza.
+     * @return String containing the pizza style.
+     */
     public abstract String getStyle();
 
 
