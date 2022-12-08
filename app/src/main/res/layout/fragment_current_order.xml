@@ -15,13 +15,13 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/currentOrderRecyclerView"
-            android:layout_width="398dp"
-            android:layout_height="346dp"
+            android:layout_width="393dp"
+            android:layout_height="310dp"
             android:layout_marginStart="2dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="2dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintHorizontal_bias="0.466"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/topDivider" />
 
@@ -105,7 +105,7 @@
             app:layout_constraintEnd_toStartOf="@+id/currentOrderPlaceOrderButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/currentOrderOrderTotalHeading"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/currentOrderPlaceOrderButton"
