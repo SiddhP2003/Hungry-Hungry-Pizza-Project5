@@ -2,6 +2,7 @@ package com.example.project5;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -26,13 +28,14 @@ import java.util.List;
  * Use the {@link ChicagoStyle#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
+public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener, View.OnClickListener {
     private Spinner chicagoFlavorSpinner;
     private Spinner chicagoSizeSpinner;
     private TextView chicagoCrustType;
     private ImageView chicagoImageView;
     private ListView toppings;
     private EditText priceEditText;
+    private Button chicagoAddButton;
     private String[] flavors = {"Deluxe", "BBQ Chicken",
             "Meatzza", "Build Your Own"};
     private String[] sizes = {"Small", "Medium", "Large"};
@@ -65,6 +68,8 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         chicagoImageView = view.findViewById(R.id.chicagoImageView);
        // setImage("Deluxe");
         priceEditText = view.findViewById(R.id.chicagoPizzaPrice);
+        chicagoAddButton = view.findViewById(R.id.chicagoAddButton);
+        chicagoAddButton.setOnClickListener(this);
         toppings = view.findViewById(R.id.chicagoToppingList);
         toppings.setOnItemClickListener(this);
         toppingAdapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_multiple_choice,toppingList){
@@ -182,7 +187,6 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         }
     }
 
-
     private void currentSize(String size){
         if(size.equals("Small")){
             pizza.setSize(Size.SMALL);
@@ -198,9 +202,41 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         }
     }
 
+    private Topping getTopping(String topping){
+        for (Topping t:
+                Topping.values()) {
+            if(t.topping().equals(topping)){
+                return t;
+            }
+        }
+        return null;
+    }
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+            if(toppings.isItemChecked(i)){
+                String selectedTopping = adapterView.getAdapter().getItem(i).toString();
+                if(!pizza.add(getTopping(selectedTopping))){
+                    AlertDialog.Builder alert = new AlertDialog.Builder(this.getActivity());
+                    alert.setTitle("The maximum number of toppings have already been added.");
+                    alert.setMessage("Remove a topping to add another.");
+                    AlertDialog dialog = alert.create();
+                    dialog.show();
+                    toppings.setItemChecked(i,false);
+                 }
+                else{
+                    CharSequence addedTopping = selectedTopping.concat(" Added!");
+                    Toast.makeText(getContext(), addedTopping, Toast.LENGTH_SHORT).show();
+                    changePrice();
+                }
+            }
+            else if(!toppings.isItemChecked(i)){
+                String selectedTopping = adapterView.getAdapter().getItem(i).toString();
+                pizza.remove(getTopping(selectedTopping));
+                CharSequence removedTopping = selectedTopping.concat(" Removed!");
+                Toast.makeText(getContext(), removedTopping, Toast.LENGTH_SHORT).show();
+                changePrice();
+            }
     }
 
 
@@ -211,5 +247,14 @@ public class ChicagoStyle extends Fragment implements AdapterView.OnItemSelected
         setImage(flavor);
         changePrice();
         setToppings(flavor);
+    }
+
+    @Override
+    public void onClick(View view) {
+        MainActivity.order.add(pizza);
+        AlertDialog.Builder alert = new AlertDialog.Builder(this.getActivity());
+        alert.setTitle("Pizza Added To Order");
+        AlertDialog dialog = alert.create();
+        dialog.show();
     }
 }

@@ -69,5 +69,9 @@ public abstract class Pizza implements Customizable {
      */
     public abstract String printPizza();
 
+    public abstract String getFlavor();
+
+    public abstract String getStyle();
+
 
 }

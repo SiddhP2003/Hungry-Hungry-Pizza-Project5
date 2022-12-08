@@ -48,6 +48,19 @@ public class BuildYourOwn extends Pizza{
         return currentPizza;
     }
 
+    @Override
+    public String getFlavor() {
+        return "Build Your Own";
+    }
+    @Override
+    public String getStyle(){
+        if(this.getCrust().equals(Crust.PAN)){
+            return "Chicago Style";
+        }
+        else {
+            return "New York Style";
+        }
+    }
 
     /**
      * Returns the price of the pizza depending on the size

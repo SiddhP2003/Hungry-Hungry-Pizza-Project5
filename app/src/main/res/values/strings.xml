@@ -7,9 +7,29 @@
     <string name="ChicagoStyleTitle">Chicago Style Pizza</string>
     <string name="newYorkStyleTitle">New York Style Pizza</string>
     <string name="Crust">Crust: </string>
+    <string name="CrustType">CrustType</string>
     <string name="Topping">Toppings: </string>
     <string name="Add">Add to Order</string>
     <string name="Flavor">Flavors</string>
     <string name="Size">Sizes</string>
+    <string name="OrderNumber">Order Number:</string>
+    <string name="Subtotal">Subtotal:</string>
+    <string name="SalesTax">Sales Tax:</string>
+    <string name="OrderTotal">Order Total:</string>
+    <string name="RemovePizza">Remove Pizza</string>
+    <string name="ClearOrder">Clear Order</string>
+    <string name="PlaceOrder">Place Order</string>
+    <string name="PizzaImage">Pizza Image</string>
+    <string name="Price">Price</string>
+    <string name="CurrentOrderNumber">Number</string>
+    <string name="CurrentSubTotal">Number</string>
+    <string name="CurrentSalesTax">Number</string>
+    <string name="CurrentOrderTotal">Number</string>
+    <string name="PizzaFlavor">Flavor</string>
+    <string name="PizzaStyleAndCrust">Style And Crust</string>
+    <string name="PizzaToppings">Toppings</string>
+    <string name="PizzaSize">Size</string>
+    <string name="PizzaPrice">Price</string>
+    <string name="Remove">Remove</string>
 
 </resources>

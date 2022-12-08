@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
     NewYorkStyle newYorkStyle = new NewYorkStyle();
     CurrentOrder currentOrder = new CurrentOrder();
     StoreOrders storeOrders = new StoreOrders();
-
+    private int currentOrderNumber = 1;
+    public static Order order = new Order();
+    public static StoreOrder allOrders = new StoreOrder();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,16 +56,19 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.navigation_chicago, R.id.navigation_newyork, R.id.navigation_current, R.id.navigation_store)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-//        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-//        NavigationUI.setupWithNavController(binding.navView, navController);
+        order.setOrderNumber(currentOrderNumber);
 
 
+    }
+
+    public void newOrder(){
+        currentOrderNumber++;
+        order = new Order();
+        order.setOrderNumber(currentOrderNumber);
+    }
+
+    public int getOrderNumber(){
+        return currentOrderNumber;
     }
 
 }

@@ -46,7 +46,15 @@ public class Meatzza extends Pizza{
                 currentPizza.concat(this.getSize().name()+","+"$"+format.format(this.price()));
         return currentPizza;
     }
-
+    @Override
+    public String getStyle(){
+        if(this.getCrust().equals(Crust.STUFFED)){
+            return "Chicago Style";
+        }
+        else {
+            return "New York Style";
+        }
+    }
     /**
      * Returns the price of the pizza depending on the size
      * @return double, one of three prices based on pizza size
@@ -89,6 +97,11 @@ public class Meatzza extends Pizza{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String getFlavor() {
+        return "Meatzza";
     }
 }
 
