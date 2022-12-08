@@ -19,9 +19,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link StoreOrders#newInstance} factory method to
- * create an instance of this fragment.
+ *Fragment that manages all of the store orders. Allows user to view and clear orders.
+ * @author Siddh Parmar, Yash Patel
  */
 public class StoreOrders extends Fragment implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     Spinner storeOrderSpinner;
@@ -33,6 +32,13 @@ public class StoreOrders extends Fragment implements AdapterView.OnItemSelectedL
     ArrayList<CurrentOrderModel> storeOrderModels = new ArrayList<>();
     private final DecimalFormat format = new DecimalFormat("#.##");
 
+    /**
+     * Creates the view for ChicagoStyle.
+     * @param inflater Inflater that will inflate the layout with the ChicagoStyle layout.
+     * @param container Container that holds the layout.
+     * @param savedInstanceState The last saved state of the instance.
+     * @return View containing the ChicagoStyle layout.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,7 +52,6 @@ public class StoreOrders extends Fragment implements AdapterView.OnItemSelectedL
         if(MainActivity.orderNumbers.size() > 0) {
             storeOrderModels.clear();
             setUpStoreOrderModels(new Integer(MainActivity.orderNumbers.get(0)));
-           // storeOrderOrderTotal.setText("$"+format.format(getSpecificOrder(Integer.valueOf(MainActivity.orderNumbers.get(0))).getOrderTotal()));
         }
        storeOrderRecyclerAdapter = new StoreOrderRecyclerViewAdapter(this.getActivity(),storeOrderModels);
         storeOrderRecyclerView.setAdapter(storeOrderRecyclerAdapter);
@@ -57,6 +62,10 @@ public class StoreOrders extends Fragment implements AdapterView.OnItemSelectedL
         return view;
     }
 
+    /**
+     * Performs actions based on when a view is clicked.
+     * @param view View that was clicked.
+     */
     @Override
     public void onClick(View view) {
         if(MainActivity.orderNumbers.size() > 0) {
@@ -64,6 +73,9 @@ public class StoreOrders extends Fragment implements AdapterView.OnItemSelectedL
         }
     }
 
+    /**
+     * Performs actions when the fragment is resumed.
+     */
     @Override
     public void onResume(){
        if(MainActivity.orderNumbers.size() > 0) {
@@ -73,29 +85,42 @@ public class StoreOrders extends Fragment implements AdapterView.OnItemSelectedL
 
     }
 
+    /**
+     * Listener that performs actions based on the item selected.
+     * @param adapterView Holds the adapter on which the item was selected.
+     * @param view View on which the item was selected.
+     * @param i Position of the selected item.
+     * @param l The row id of the item that was clicked.
+     */
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            storeOrderModels.clear();
-     //   storeOrderRecyclerAdapter.notifyAll();
-//        for(int i = 0; i < MainActivity.order.getPizzas().size(); i++){
-//            currentOrderAdapter.currentOrderModels.remove(0);
-//            currentOrderAdapter.notifyItemRemoved(0);
-//        }
+        storeOrderModels.clear();
         setUpStoreOrderModels(Integer.valueOf(storeOrderSpinner.getSelectedItem().toString()));
         storeOrderRecyclerAdapter.notifyDataSetChanged();
         setOrderTotalText();
-       // storeOrderModels.notifyAll();
     }
 
+    /**
+     * Sets text for the order total based on selected order.
+     */
     public void setOrderTotalText(){
         storeOrderOrderTotal.setText("$"+format.format(getSpecificOrder(Integer.valueOf(storeOrderSpinner.getSelectedItem().toString())).getOrderTotal()));
     }
 
+    /**
+     * Performs actions when no item is selected.
+     * @param adapterView The adapter of the view on which nothing was selected.
+     */
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
         storeOrderOrderTotal.setText("");
     }
 
+    /**
+     * Returns the specific order that corresponds to the order number
+     * @param orderNumber, the order number associated with an order
+     * @return Order, the order associated with the order number
+     */
     public Order getSpecificOrder(int orderNumber){
         for(int i =0; i <MainActivity.allOrders.getOrders().size(); i++){
             if(MainActivity.allOrders.getOrders().get(i).getNumber() == orderNumber){
@@ -105,6 +130,10 @@ public class StoreOrders extends Fragment implements AdapterView.OnItemSelectedL
         return null;
     }
 
+    /**
+     * Removes the specific order that corresponds to the order number
+     * @param orderNumber, the order number associated with an order
+     */
     public void removeSpecificOrder(int orderNumber){
         for(int i =0; i < MainActivity.allOrders.getOrders().size(); i++){
             if(MainActivity.allOrders.getOrders().get(i).getNumber() == orderNumber){
@@ -113,10 +142,12 @@ public class StoreOrders extends Fragment implements AdapterView.OnItemSelectedL
         }
     }
 
+    /**
+     * Cancels the selected order.
+     */
     public void cancelOrder(){
         DecimalFormat format = new DecimalFormat("#.##");
         int orderNumber = Integer.parseInt(storeOrderSpinner.getSelectedItem().toString());
-        //MainActivity.orderNumbers.remove(storeOrderSpinner.getSelectedItem().toString());
         storeOrderAdapter.remove(storeOrderSpinner.getSelectedItem().toString());
         storeOrderSpinner.setAdapter(storeOrderAdapter);
         storeOrderModels.clear();
@@ -129,17 +160,14 @@ public class StoreOrders extends Fragment implements AdapterView.OnItemSelectedL
         else{
             storeOrderOrderTotal.setText("");
         }
-        //orderNumberComboBox.getItems().remove(orderNumberComboBox.getSelectionModel().getSelectedItem());
-        //ordersListView.getItems().clear();
         removeSpecificOrder(orderNumber);
-
-      //  orderTotalTextField.setText("");
     }
 
-
+    /**
+     * Sets up the store order model based on the selected order number.
+     * @param orderNumber Order number that is selected by user.
+     */
     private void setUpStoreOrderModels(int orderNumber){
-//        if(currentOrderAdapter.currentOrderModels.size() != MainActivity.order.getPizzas().size() && currentOrderAdapter.currentOrderModels.size() != 0) {
-
         Order selectedOrder = getSpecificOrder(orderNumber);
         for (int i = 0; i < selectedOrder.getPizzas().size(); i++) {
             String flavor = selectedOrder.getPizzas().get(i).getFlavor();
@@ -159,6 +187,5 @@ public class StoreOrders extends Fragment implements AdapterView.OnItemSelectedL
             storeOrderModels.add(new CurrentOrderModel(flavor, styleAndCrust, toppings, size, price));
 
         }
-        //    }
     }
 }

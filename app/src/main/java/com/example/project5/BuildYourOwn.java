@@ -48,10 +48,19 @@ public class BuildYourOwn extends Pizza{
         return currentPizza;
     }
 
+    /**
+     * Returns the pizza flavor.
+     * @return String containing pizza flavor.
+     */
     @Override
     public String getFlavor() {
         return "Build Your Own";
     }
+
+    /**
+     * Returns the style of the pizza.
+     * @return String containing Chicago Style or New York Style
+     */
     @Override
     public String getStyle(){
         if(this.getCrust().equals(Crust.PAN)){

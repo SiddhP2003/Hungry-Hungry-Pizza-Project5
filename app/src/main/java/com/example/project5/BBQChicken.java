@@ -47,6 +47,11 @@ public class BBQChicken extends Pizza {
                 currentPizza.concat(this.getSize().name()+","+"$"+format.format(this.price()));
         return currentPizza;
     }
+
+    /**
+     * Returns the style of the pizza.
+     * @return String containing Chicago Style or New York Style
+     */
     @Override
     public String getStyle(){
         if(this.getCrust().equals(Crust.PAN)){
@@ -56,6 +61,7 @@ public class BBQChicken extends Pizza {
             return "New York Style";
         }
     }
+
     /**
      * Returns the price of the pizza depending on the size
      * @return double, one of three prices based on pizza size
@@ -101,6 +107,10 @@ public class BBQChicken extends Pizza {
         return false;
     }
 
+    /**
+     * Returns the pizza flavor.
+     * @return String containing pizza flavor.
+     */
     @Override
     public String getFlavor() {
         return "BBQChicken";
