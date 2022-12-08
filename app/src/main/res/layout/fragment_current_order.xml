@@ -98,54 +98,40 @@
             android:layout_marginStart="85dp"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="12dp"
-            android:layout_marginBottom="26dp"
             android:text="@string/OrderTotal"
             android:textColor="@color/black"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/currentOrderRemovePizzaButton"
             app:layout_constraintEnd_toStartOf="@+id/currentOrderOrderTotal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/currentOrderSalesTaxHeading" />
 
         <Button
-            android:id="@+id/currentOrderRemovePizzaButton"
-            android:layout_width="121dp"
-            android:layout_height="54dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="178dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginBottom="42dp"
-            android:text="@string/RemovePizza"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/currentOrderClearOrderButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/currentOrderRecyclerView" />
-
-        <Button
             android:id="@+id/currentOrderClearOrderButton"
             android:layout_width="124dp"
             android:layout_height="56dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="49dp"
+            android:layout_marginEnd="21dp"
+            android:layout_marginBottom="55dp"
             android:text="@string/ClearOrder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/currentOrderPlaceOrderButton"
-            app:layout_constraintStart_toEndOf="@+id/currentOrderRemovePizzaButton"
-            app:layout_constraintTop_toBottomOf="@+id/currentOrderOrderTotalHeading"
-            app:layout_constraintVertical_bias="0.925" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currentOrderOrderTotalHeading" />
 
         <Button
             android:id="@+id/currentOrderPlaceOrderButton"
             android:layout_width="118dp"
             android:layout_height="55dp"
-            android:layout_marginTop="176dp"
-            android:layout_marginBottom="42dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="93dp"
+            android:layout_marginBottom="57dp"
             android:text="@string/PlaceOrder"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/currentOrderClearOrderButton"
-            app:layout_constraintTop_toBottomOf="@+id/currentOrderRecyclerView" />
+            app:layout_constraintTop_toBottomOf="@+id/currentOrderOrderTotal" />
 
         <EditText
             android:id="@+id/currentOrderSalesTax"
